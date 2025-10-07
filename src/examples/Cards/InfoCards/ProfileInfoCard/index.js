@@ -90,11 +90,31 @@ function ProfileInfoCard({ title, description, info, social, action, shadow }) {
         <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
           {title}
         </MDTypography>
-        <MDTypography component={Link} to={action.route} variant="body2" color="secondary">
-          <Tooltip title={action.tooltip} placement="top">
-            <Icon>edit</Icon>
-          </Tooltip>
-        </MDTypography>
+        {action.onClick ? (
+          <MDTypography
+            component="button"
+            onClick={action.onClick}
+            variant="body2"
+            color="secondary"
+            sx={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: 0,
+              textDecoration: "none",
+            }}
+          >
+            <Tooltip title={action.tooltip} placement="top">
+              <Icon>edit</Icon>
+            </Tooltip>
+          </MDTypography>
+        ) : (
+          <MDTypography component={Link} to={action.route} variant="body2" color="secondary">
+            <Tooltip title={action.tooltip} placement="top">
+              <Icon>edit</Icon>
+            </Tooltip>
+          </MDTypography>
+        )}
       </MDBox>
       <MDBox p={2}>
         <MDBox mb={2} lineHeight={1}>
@@ -131,8 +151,9 @@ ProfileInfoCard.propTypes = {
   info: PropTypes.objectOf(PropTypes.string).isRequired,
   social: PropTypes.arrayOf(PropTypes.object).isRequired,
   action: PropTypes.shape({
-    route: PropTypes.string.isRequired,
+    route: PropTypes.string,
     tooltip: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
   }).isRequired,
   shadow: PropTypes.bool,
 };

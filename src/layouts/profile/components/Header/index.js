@@ -26,6 +26,9 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Icon from "@mui/material/Icon";
 
+// @mui icons
+import PersonIcon from "@mui/icons-material/Person";
+
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
@@ -35,12 +38,14 @@ import MDAvatar from "components/MDAvatar";
 import breakpoints from "assets/theme/base/breakpoints";
 
 // Images
-import burceMars from "assets/images/bruce-mars.jpg";
 import backgroundImage from "assets/images/bg-profile.jpeg";
 
-function Header({ children }) {
+function Header({ children, userDisplayName, userPhotoURL }) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
+
+  // Debug logging
+  console.log("Header - userPhotoURL:", userPhotoURL);
 
   useEffect(() => {
     // A function that sets the orientation state of the tabs.
@@ -94,15 +99,37 @@ function Header({ children }) {
       >
         <Grid container spacing={3} alignItems="center">
           <Grid item>
-            <MDAvatar src={burceMars} alt="profile-image" size="xl" shadow="sm" />
+            {userPhotoURL ? (
+              <MDAvatar
+                src={userPhotoURL}
+                alt="profile-image"
+                size="xl"
+                shadow="sm"
+                sx={{
+                  width: 74,
+                  height: 74,
+                }}
+              />
+            ) : (
+              <MDAvatar
+                alt="profile-image"
+                size="xl"
+                shadow="sm"
+                sx={{
+                  width: 74,
+                  height: 74,
+                  backgroundColor: "info.main",
+                  color: "white",
+                }}
+              >
+                <PersonIcon sx={{ fontSize: "2rem" }} />
+              </MDAvatar>
+            )}
           </Grid>
           <Grid item>
             <MDBox height="100%" mt={0.5} lineHeight={1}>
               <MDTypography variant="h5" fontWeight="medium">
-                Richard Davis
-              </MDTypography>
-              <MDTypography variant="button" color="text" fontWeight="regular">
-                CEO / Co-Founder
+                {userDisplayName || "EcoData User"}
               </MDTypography>
             </MDBox>
           </Grid>
@@ -146,11 +173,15 @@ function Header({ children }) {
 // Setting default props for the Header
 Header.defaultProps = {
   children: "",
+  userDisplayName: "EcoData User",
+  userPhotoURL: null,
 };
 
 // Typechecking props for the Header
 Header.propTypes = {
   children: PropTypes.node,
+  userDisplayName: PropTypes.string,
+  userPhotoURL: PropTypes.string,
 };
 
 export default Header;

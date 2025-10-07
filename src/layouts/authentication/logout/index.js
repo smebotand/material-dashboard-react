@@ -9,10 +9,13 @@
 =========================================================
 */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // react-router-dom components
 import { Link } from "react-router-dom";
+
+// Authentication context
+import { useAuth } from "contexts/AuthContext";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -39,8 +42,25 @@ import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
 function Logout() {
   const [rememberMe, setRememberMe] = useState(false);
+  const { signOut, currentUser } = useAuth();
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+
+  useEffect(() => {
+    // Automatically sign out when this component mounts
+    const performSignOut = async () => {
+      try {
+        await signOut();
+        console.log("User signed out successfully");
+      } catch (error) {
+        console.error("Error signing out:", error);
+      }
+    };
+
+    if (currentUser) {
+      performSignOut();
+    }
+  }, [signOut, currentUser]);
 
   return (
     <BasicLayout image={bgImage}>
@@ -102,33 +122,7 @@ function Logout() {
 
           <MDBox mt={2} mb={1} textAlign="center">
             <MDTypography variant="button" color="text">
-              Need help?{" "}
-              <MDTypography
-                component={Link}
-                to="/authentication/sign-up"
-                variant="button"
-                color="info"
-                fontWeight="medium"
-                textGradient
-              >
-                Contact Support
-              </MDTypography>
-            </MDTypography>
-          </MDBox>
-
-          <MDBox mt={3} mb={1} textAlign="center">
-            <MDTypography variant="button" color="text">
-              Don&apos;t have an account?{" "}
-              <MDTypography
-                component={Link}
-                to="/authentication/sign-up"
-                variant="button"
-                color="info"
-                fontWeight="medium"
-                textGradient
-              >
-                Sign up
-              </MDTypography>
+              Need help with your account? Contact support through your Google account settings.
             </MDTypography>
           </MDBox>
         </MDBox>

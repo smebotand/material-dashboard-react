@@ -42,7 +42,6 @@ import LabOrders from "layouts/lab-orders";
 import DataVisualization from "layouts/data-visualization";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
-import SignUp from "layouts/authentication/sign-up";
 import Logout from "layouts/authentication/logout";
 
 // @mui icons
@@ -118,14 +117,6 @@ const routes = [
     icon: <Icon fontSize="small">login</Icon>,
     route: "/authentication/sign-in",
     component: <SignIn />,
-  },
-  {
-    type: "collapse",
-    name: "Sign Up",
-    key: "sign-up",
-    icon: <Icon fontSize="small">assignment</Icon>,
-    route: "/authentication/sign-up",
-    component: <SignUp />,
   },
   {
     route: "/authentication/logout",
