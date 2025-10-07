@@ -1,10 +1,15 @@
 {
-  "short_name": "Material Dashboard",
-  "name": "Material Dashboard 2 React",
+  "short_name": "EcoData Hub",
+  "name": "EcoData Hub - Environmental Data Management",
   "icons": [
     {
       "src": "favicon.png",
       "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-icon.png",
+      "sizes": "76x76",
       "type": "image/png"
     }
   ],
