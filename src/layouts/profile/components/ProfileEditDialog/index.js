@@ -22,6 +22,7 @@ function ProfileEditDialog({ open, onClose, onSave }) {
   const { userProfile, updateUserProfile } = useAuth();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
+    displayName: "",
     company: "",
     jobTitle: "",
     phone: "",
@@ -42,6 +43,7 @@ function ProfileEditDialog({ open, onClose, onSave }) {
       console.log("userProfile:", userProfile);
 
       const newFormData = {
+        displayName: userProfile?.displayName || "",
         company: userProfile?.company || "",
         jobTitle: userProfile?.jobTitle || "",
         phone: userProfile?.phone || "",
@@ -86,6 +88,7 @@ function ProfileEditDialog({ open, onClose, onSave }) {
   const handleCancel = () => {
     // Reset form data to original values
     setFormData({
+      displayName: userProfile?.displayName || "",
       company: userProfile?.company || "",
       jobTitle: userProfile?.jobTitle || "",
       phone: userProfile?.phone || "",
@@ -111,6 +114,17 @@ function ProfileEditDialog({ open, onClose, onSave }) {
       <DialogContent>
         <MDBox pt={2}>
           <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Display Name"
+                value={formData.displayName}
+                onChange={handleInputChange("displayName")}
+                variant="outlined"
+                placeholder="e.g., John Smith"
+                helperText="This is how your name will appear throughout the platform"
+              />
+            </Grid>
             <Grid item xs={12} md={6}>
               <TextField
                 fullWidth
