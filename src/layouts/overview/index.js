@@ -14,11 +14,11 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
 // Material Dashboard 2 React example components
-import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
-import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
-import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
+import DashboardLayout from "shared/LayoutContainers/DashboardLayout";
+import DashboardNavbar from "shared/Navbars/DashboardNavbar";
+import Footer from "shared/Footer";
+import ComplexStatisticsCard from "shared/Cards/StatisticsCards/ComplexStatisticsCard";
+import ReportsLineChart from "shared/Charts/LineCharts/ReportsLineChart";
 
 // Overview components
 import ProjectsOverview from "./components/ProjectsOverview";

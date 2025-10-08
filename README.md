@@ -85,7 +85,6 @@ Let us know your thoughts below. And good luck with development!
 - [Profile](https://demos.creative-tim.com/material-dashboard-react/#/profile?ref=readme-sudr)
 - [RTL](https://demos.creative-tim.com/material-dashboard-react/#/rtl?ref=readme-sudr)
 - [Sign In](https://demos.creative-tim.com/material-dashboard-react/#/authentication/sign-in?ref=readme-sudr)
-- [Sign Up](https://demos.creative-tim.com/material-dashboard-react/#/authentication/sign-up?ref=readme-sudr)
 
 [View More](https://demos.creative-tim.com/material-dashboard-react/#/dashboard?ref=readme-mdr).
 

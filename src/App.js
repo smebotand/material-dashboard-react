@@ -26,9 +26,9 @@ import Icon from "@mui/material/Icon";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 
-// Material Dashboard 2 React example components
-import Sidenav from "examples/Sidenav";
-import Configurator from "examples/Configurator";
+// Material Dashboard 2 React shared components
+import Sidenav from "shared/Sidenav";
+import Configurator from "shared/Configurator";
 
 // Material Dashboard 2 React themes
 import theme from "assets/theme";
